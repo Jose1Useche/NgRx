@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShowCaseService } from '../../services/show-case.service';
+// import { ShowCaseService } from '../../services/show-case.service';
 
 @Component({
   selector: 'app-ui-block-item',
@@ -10,12 +10,16 @@ export class UiBlockItemComponent implements OnInit {
 
   listData: any = []
 
-  constructor(private showCase: ShowCaseService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.showCase.getDataApi()
-      .subscribe((res) => {
-        this.listData = res
-      })
+    throw new Error('Method not implemented.');
   }
+
+  // ngOnInit(): void {
+  //   this.showCase.getDataApi()
+  //     .subscribe((res) => {
+  //       this.listData = res
+  //     })
+  // }
 }

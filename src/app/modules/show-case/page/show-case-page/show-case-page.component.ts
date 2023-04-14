@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ItemModel } from 'src/app/core/models/item.interface';
-import { ShowCaseService } from '../../services/show-case.service';
+import { Store } from '@ngrx/store';
+import { loadItems } from 'src/app/state/actions/items.actions';
 
 @Component({
   selector: 'app-show-case-page',
@@ -10,13 +9,10 @@ import { ShowCaseService } from '../../services/show-case.service';
 })
 export class ShowCasePageComponent implements OnInit {
 
-  listItems: ItemModel[] = []
-  listItems$: Observable<any> = new Observable()
-
-  constructor(private showCase: ShowCaseService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.loadData()
+    this.store.dispatch(loadItems());
   }
 
   loadData(): void {
