@@ -6,6 +6,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { itemsReducer } from './state/reducers/items.reducers';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     HttpClientModule,    
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({
+      estadoDeItems: itemsReducer
+    }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
