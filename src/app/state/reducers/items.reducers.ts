@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ItemModel } from 'src/app/core/models/item.interface';
-import { loadItems } from '../actions/items.actions';
+import { loadItems, loadedItems } from '../actions/items.actions';
 
 export interface ItemsState {
   loading: boolean;
@@ -18,6 +18,13 @@ export const itemsReducer =  createReducer(
         return {
             ...state,
             loading: true
+        }
+    }),
+    on(loadedItems, (state, {items}) => {
+        return {
+            ...state,
+            loading: false,
+            items
         }
     }),
     // on(bla bla bla),
